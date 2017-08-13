@@ -2,11 +2,20 @@ require "spec_helper"
 
 module ConnectFour
 	RSpec.describe Cell do
-		describe "initialize" do
-			context "#initialize" do
+
+		let(:cellBlank) {Cell.new}
+		let(:cellValue) {Cell.new("RED")}
+
+		describe "#initialize" do
+			context "initialize with no input" do
 				it "is initialized with a value of '' by default" do
-					cell = Cell.new
-					expect(cell.value).to eq ''
+					expect(cellBlank.value).to eq ''
+				end
+			end
+
+			context "initialize with a value" do
+				it "creates a cell with the passed value" do
+					expect(cellValue.value).to eq "RED"
 				end
 			end
 		end
