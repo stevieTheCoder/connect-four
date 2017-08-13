@@ -3,9 +3,8 @@ require "spec_helper"
 module ConnectFour
 	RSpec.describe Board do
 
-		let(:blank) {Player.new({})}
-		let(:steve) {Player.new({ name: "steve", colour: "RED" })}
 		let(:board) {Board.new}
+		let(:boardGridTest) {Board.new(grid: "test")}
 
 		describe "#initialize" do
 			context "creating a grid of blank cells" do
@@ -18,6 +17,15 @@ module ConnectFour
 						expect(row.length).to eq 7
 					end
 				end
+			end
+		end
+
+		describe "#grid" do
+			context "attr_reader is working" do
+				it "returns the value of the grid" do
+					expect(boardGridTest.grid).to eq "test"
+				end
+
 			end
 		end
 
