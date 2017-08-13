@@ -5,6 +5,7 @@ module ConnectFour
 
 		let(:board) {Board.new}
 		let(:boardGridTest) {Board.new(grid: "test")}
+		let(:exampleGrid) {Board.new(grid: [["","",""], ["","test",""]])}
 
 		describe "#initialize" do
 			context "creating a grid of blank cells" do
@@ -26,6 +27,14 @@ module ConnectFour
 					expect(boardGridTest.grid).to eq "test"
 				end
 
+			end
+		end
+
+		describe "#get_cell" do
+			context "nested array y,x to x,y standard" do
+				it "returns the cell based on the x, y coordinate" do
+					expect(exampleGrid.get_cell(1,1)).to eq "test"
+				end
 			end
 		end
 
