@@ -21,11 +21,20 @@ module ConnectFour
 		end
 
 		describe "#name" do
-			context "variables can be accessed" do
-				it "returns the name" do
+			context "name variable can be accessed" do
+				it "returns the player name" do
 					expect(steve.name).to eq "steve"
 				end
 			end
 		end
+
+		describe "#colour" do
+			context "colour variable can be accessed" do
+				it "returns the player colour" do
+					expect(steve.colour).to eq "RED"
+				end
+			end
+		end
+
 	end
 end
