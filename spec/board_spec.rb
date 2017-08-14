@@ -48,5 +48,31 @@ module ConnectFour
 			end
 		end
 
+		describe "#game_over" do
+			context "when there is a winner" do
+				it "returns :winner if winner? is true" do
+					allow(board).to receive(:winner?) { true }
+					expect(board.game_over).to eq :winner
+				end
+			end
+
+			context "where there is no winner" do
+				it "returns :draw if draw? is true" do
+					allow(board).to receive(:winner?) {false}
+					allow(board).to receive(:draw?) {true}
+					expect(board.game_over).to eq :draw
+				end
+			end
+
+			context "when the game is in progress" do
+				it "returns false" do
+					allow(board).to receive (:winner?) { false }
+					allow(board).to receive (:draw?) { false }
+					expect(board.game_over).to be false
+				end
+			end
+
+		end
+
 	end
 end
