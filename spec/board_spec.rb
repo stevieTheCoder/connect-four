@@ -38,5 +38,15 @@ module ConnectFour
 			end
 		end
 
+		describe "#set_cell" do
+			context "setter for grid cells" do
+				it "changes the value of a cell" do
+					test = board
+					test.set_cell(1, 1, "RED")
+					expect(test.get_cell(1, 1).value).to eq "RED"
+				end
+			end
+		end
+
 	end
 end
