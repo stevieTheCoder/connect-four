@@ -117,5 +117,23 @@ module ConnectFour
 				end
 			end
 		end
+
+		describe "#draw?" do
+			context "determines that there is no winner and all spaces are available on board" do
+				it "returns true if all elements are not empty" do
+					full_test_grid = [
+						[yellow, yellow, yellow, red, yellow, yellow, yellow],
+						[red, red, red, yellow, red, red, red],
+						[yellow, yellow, red, red, red, yellow, red],
+						[red, red, yellow, yellow, red, red, yellow],
+						[yellow, yellow, red, red, yellow, yellow, red],
+						[yellow, yellow, red, red, yellow, red, yellow]
+					]
+					board = Board.new(grid: full_test_grid)
+					expect(board.game_over).to eq :draw
+				end
+			end
+		end
+
 	end
 end

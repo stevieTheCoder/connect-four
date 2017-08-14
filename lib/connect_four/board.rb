@@ -21,6 +21,12 @@ module ConnectFour
 			false
 		end
 
+		private
+
+		def draw?
+			grid.flatten.map { |cell| cell.value }.none_empty?
+		end
+
 		def winner?
       		winning_positions.each do |winning_position|
         		next if winning_position_values(winning_position).all_empty?
@@ -38,8 +44,6 @@ module ConnectFour
 	    	grid.transpose + #columns
 	    	grid.diagonals
 	    end
-
-		private
 
 		def default_grid
 			Array.new(6) { Array.new(7) {Cell.new} }
