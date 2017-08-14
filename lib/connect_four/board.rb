@@ -34,7 +34,8 @@ module ConnectFour
 	    end
  
 	    def winning_positions
-	    	grid # rows
+	    	grid + # rows
+	    	grid.transpose #columns
 	    end
 
 		private

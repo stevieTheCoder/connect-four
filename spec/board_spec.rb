@@ -91,6 +91,18 @@ module ConnectFour
 					board = Board.new(grid: horizontal_test_grid)
 					expect(board.game_over).to eq :winner
 				end
+
+				it "returns true if four vertical cells have the same value" do
+					vertical_test_grid = [
+						[empty, empty, empty, empty, empty, empty, empty],
+						[red, empty, empty, empty, empty, empty, empty],
+						[red, empty, empty, empty, empty, empty, empty],
+						[red, yellow, yellow, red, yellow, red, red],
+						[red, yellow, yellow, red, yellow, red, red]
+					]
+					board = Board.new(grid: vertical_test_grid)
+					expect(board.game_over).to eq :winner
+				end
 			end
 		end
 	end
