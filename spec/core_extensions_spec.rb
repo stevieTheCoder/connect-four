@@ -61,4 +61,15 @@ RSpec.describe Array do
 			end
 		end
 	end
+
+	let(:grid) { [[1,2,3],[1,2,3],[1,2,3]] }
+
+	describe "#diagonals" do
+		context "collects all possible diagonals of a 2d array as arrays" do
+			it "returns a 2d array of diagonals" do
+				expect(grid.diagonals).to eq [[1, 2], [1, 2, 3], [2, 3], [3, 2], [3, 2, 1], [2, 1]]
+			end
+		end
+	end
+
 end
