@@ -21,6 +21,22 @@ module ConnectFour
 			false
 		end
 
+		def winner?
+      		winning_positions.each do |winning_position|
+        		next if winning_position_values(winning_position).all_empty?
+        		return true if winning_position_values(winning_position).four_connected?
+      		end
+        	false
+    	end
+
+	    def winning_position_values(winning_position)
+	    	winning_position.map { |cell| cell.value }
+	    end
+ 
+	    def winning_positions
+	    	grid # rows
+	    end
+
 		private
 
 		def default_grid

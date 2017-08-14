@@ -58,8 +58,8 @@ module ConnectFour
 
 			context "where there is no winner" do
 				it "returns :draw if draw? is true" do
-					allow(board).to receive(:winner?) {false}
-					allow(board).to receive(:draw?) {true}
+					allow(board).to receive(:winner?) { false }
+					allow(board).to receive(:draw?) { true }
 					expect(board.game_over).to eq :draw
 				end
 			end
@@ -71,8 +71,27 @@ module ConnectFour
 					expect(board.game_over).to be false
 				end
 			end
-
 		end
 
+		TestCell = Struct.new(:value)
+		let(:red) { TestCell.new("RED") }
+		let(:yellow) { TestCell.new("YELLOW") }
+		let(:empty) { TestCell.new }
+		
+		describe "#winner?" do
+			context "determines if a player has won the game" do
+				it "returns true if four horizontal cells have the same value" do
+					horizontal_test_grid = [
+						[empty, empty, empty, empty, empty, empty, empty],
+						[empty, empty, empty, empty, empty, empty, empty],
+						[empty, empty, empty, empty, empty, empty, empty],
+						[red, yellow, yellow, yellow, yellow, red, red],
+						[red, yellow, yellow, red, yellow, red, red]
+					]
+					board = Board.new(grid: horizontal_test_grid)
+					expect(board.game_over).to eq :winner
+				end
+			end
+		end
 	end
 end
