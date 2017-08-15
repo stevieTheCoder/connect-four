@@ -67,5 +67,19 @@ module ConnectFour
         end
       end
     end
+
+    describe "#game_over_message" do
+      it "returns '{current player name} won!' if board shows a winner" do
+        game = Game.new([steve, rebecca])
+        allow(game).to receive(:current_player) { steve }
+        allow(game.board).to receive(:game_over) { :winner }
+        expect(game.game_over_message).to eq "steve won!"
+      end
+
+      it "returns 'The game ended in a draw' if board shows draw" do
+        game = Game.new([steve, rebecca])
+        allow(game.board).to receive(:game_over) { :draw }
+      end
+    end
   end
 end

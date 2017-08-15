@@ -23,7 +23,7 @@ module ConnectFour
 
 		def formatted_grid
 			grid.each do |row|
-				puts row.map { cell.value.empty? ? "_" : "#{cell.counter}" }.join("|")
+				puts row.map { |cell| cell.value.empty? ? "_" : cell.symbol }.join("|")
 			end
 		end
 
