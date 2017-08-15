@@ -36,5 +36,36 @@ module ConnectFour
         end
       end
     end
+
+    describe "#solicit_move" do
+      it "asks the current_player for input" do
+	      game = Game.new([steve, rebecca])
+	      allow(game).to receive(:current_player) {steve}
+	      expected = "steve please make your move by entering a number between 1 and 7."
+	      expect(game.solicit_move).to eq expected
+	    end
+	  end
+
+    TestCell = Struct.new(:value)
+		let(:red) { TestCell.new("RED") }
+		let(:yellow) { TestCell.new("YELLOW") }
+		let(:empty) { TestCell.new('') }
+
+    describe "#get_move" do
+      context "allows the player to enter input and maps to available space on board" do
+        it "returns the coordinate of the correct array point" do
+          horizontal_test_grid = [
+						[empty, empty, empty, empty, empty, empty, empty],
+						[empty, empty, empty, empty, empty, empty, empty],
+						[empty, empty, empty, empty, empty, empty, empty],
+						[red, empty, yellow, yellow, yellow, red, red],
+						[red, yellow, yellow, red, yellow, red, red]
+					]
+          game = Game.new([steve, rebecca])
+          allow(game.board).to receive(:grid) { horizontal_test_grid }
+          expect(game.get_move(1)).to eq [0, 2]
+        end
+      end
+    end
   end
 end
