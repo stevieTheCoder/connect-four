@@ -77,7 +77,7 @@ module ConnectFour
 		let(:red) { TestCell.new("RED") }
 		let(:yellow) { TestCell.new("YELLOW") }
 		let(:empty) { TestCell.new }
-		
+
 		describe "#winner?" do
 			context "determines if a player has won the game" do
 				it "returns true if four horizontal cells have the same value" do
