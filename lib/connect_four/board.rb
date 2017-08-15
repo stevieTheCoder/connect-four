@@ -21,6 +21,12 @@ module ConnectFour
 			false
 		end
 
+		def formatted_grid
+			grid.each do |row|
+				puts row.map { cell.value.empty? ? "_" : "#{cell.counter}" }.join("|")
+			end
+		end
+
 		private
 
 		def draw?
@@ -38,7 +44,7 @@ module ConnectFour
 	    def winning_position_values(winning_position)
 	    	winning_position.map { |cell| cell.value }
 	    end
- 
+
 	    def winning_positions
 	    	grid + # rows
 	    	grid.transpose + #columns

@@ -134,6 +134,5 @@ module ConnectFour
 				end
 			end
 		end
-
 	end
 end
